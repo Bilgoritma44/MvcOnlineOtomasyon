@@ -1,0 +1,32 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.Customer
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Yeni Müşteri Ekleme Sayfası</h2>
+    <form class="form-group" method="post">
+        <div class="form-group">
+            <label><b>Müşteri Adı</b></label>
+            @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Müşteri Soyadı</b></label>
+            @Html.TextBoxFor(x => x.CustomerLastname, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Şehir</b></label>
+            @Html.TextBoxFor(x => x.CustomerCity, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>E-mail</b></label>
+            @Html.TextBoxFor(x => x.CustomerMail, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-success float-right">Kaydet</button>
+            <a href="/Customer/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    </form>
+</div>
+

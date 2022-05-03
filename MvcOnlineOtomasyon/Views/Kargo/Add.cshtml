@@ -1,0 +1,39 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.KargoDetay
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Yeni Kago Ekleme Sayfası</h2>
+    <form class="form-group" method="post">
+        <div class="form-group">
+            <label><b>Takip Kodu</b></label>
+            @*@Html.TextBoxFor(x => x.TakipKodu, new { @class = "form-control" })*@
+            <input type="text" name="TakipKodu" value="@ViewBag.takipkod" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label><b>Personel</b></label>
+            @Html.TextBoxFor(x => x.Personel, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Alıcı</b></label>
+            @Html.TextBoxFor(x => x.Alici, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Tarih</b></label>
+            @*@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })*@
+            <input name="Tarih" class="form-control" type="date" />
+        </div>
+        <div class="form-group">
+            <label><b>Açıklama</b></label>
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-success float-right">Kaydet</button>
+            <a href="/Kargo/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    </form>
+</div>
+
+

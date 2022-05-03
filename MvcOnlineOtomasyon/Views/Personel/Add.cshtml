@@ -1,0 +1,36 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.Personel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Yeni Personel Ekleme Sayfası</h2>
+    @using (Html.BeginForm("Add", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <form class="form-group" method="post">
+            <div class="form-group">
+                <label><b>Personel Adı</b></label>
+                @Html.TextBoxFor(x => x.PersonelName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label><b>Personel Soyadı</b></label>
+                @Html.TextBoxFor(x => x.PersonelLastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label><b>Personel Foto</b></label>
+                @*@Html.TextBoxFor(x => x.PersonelPhoto, new { @class = "form-control" })*@
+                <input type="file" name="PersonelPhoto" class="form-control float-right" />
+                @*<button type="button" class="btn btn-outline-info float-right form-control" name="PersonelPhoto">Dosya Seç</button>*@
+            </div>
+            <div class="form-group">
+                <label><b>Departman</b></label>
+                @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-success float-right">Kaydet</button>
+                <a href="/Personel/Index" class="btn btn-outline-danger">Vazgeç</a>
+            </div>
+        </form>
+        }
+</div>

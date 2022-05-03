@@ -1,0 +1,60 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br/>
+@using(Html.BeginForm("Index","Product",FormMethod.Get))
+            {
+                <p>
+                    Ürün Adı:@Html.TextBox("p")
+                    <input type="submit" value="Ara" />
+                </p>
+            }
+
+<div class="continer">
+    <div class="form-group">
+        <table class="table table-bordered" style="margin-top:10px;">
+         
+                <tr>
+                    <th>Id</th>
+                    <th>Logo</th>
+                    <th>Adı</th>
+                    <th>Marka</th>
+                    <th>Kategori</th>
+                    <th>Stok</th>
+                    <th>Alış</th>
+                    <th>Satış</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                    <th>Satış Yap</th>
+                </tr>
+            
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.ProductId</td>
+                        <td><img src="@x.ProductPhoto" class="rounded-circle" style="width:30px;height:30px" /></td>
+                        <td>@x.ProductName</td>
+                        <td>@x.Marka</td>
+                        <td>@x.Category.CategoryName</td>
+                        <td>@x.Stock</td>
+                        <td>@x.PurchasePrice ₺</td>
+                        <td>@x.SalesPrice ₺</td>
+                        <td><a class="btn btn-outline-primary" href="/Product/Delete/@x.ProductId" id="DeleteBtn" onclick="return confirm('Silmek istediğinize emin misiniz?');"><i class="fas fa-trash"></i> Sil</a></td>
+                        <td><a class="btn btn-outline-warning" href="/Product/Update/@x.ProductId"><i class="fas fa-pen-square"></i> Güncelle</a></td>
+                        <td><a class="btn btn-default" style="background-color:slateblue;color:white" href="/Product/ProductSales/@x.ProductId"><i class="fas fa-cart-plus"></i> Satış Yap</a></td>
+
+                    </tr>
+
+                }
+            
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-success float-right" href="/Product/Add"><i class="fas fa-plus-circle"></i> Yeni Ürün Ekle</a>
+    </div>
+</div>
+
+

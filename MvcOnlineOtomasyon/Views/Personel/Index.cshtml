@@ -1,0 +1,43 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="form-group">
+        <table class="table table-bordered" style="margin-top:10px;">
+            <tr>
+                <th>Personel Id</th>
+                <th>Foto</th>
+                <th>Personel Soyadı</th>
+                <th>Personel Adı</th>
+                <th>Departman</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+                <th>Detay</th>
+            </tr>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.PersonelId</td>
+                    <td><img src="@x.PersonelPhoto" style="width:50px; height:50px;" class="rounded-circle" /></td>
+                    <td>@x.PersonelName</td>
+                    <td>@x.PersonelLastName</td>
+                    <td>@x.Department.DepartmentName</td>
+                    <td><a class="btn btn-outline-primary" href="/Personel/Delete/@x.PersonelId" id="DeleteBtn" onclick="return confirm('Silmek istediğinize emin misiniz?');"><i class="fas fa-trash"></i> Sil</a></td>
+                    <td><a class="btn btn-outline-warning" href="/Personel/Update/@x.PersonelId"><i class="fas fa-pen-square"></i> Güncelle</a></td>
+                    <td><a class="btn btn-outline-danger" href="/Personel/Detail/@x.PersonelId"><i class="fas fa-info-circle"></i> Detay</a></td>
+
+
+                </tr>
+
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-success float-right" href="/Personel/Add"><i class="fas fa-plus-circle"></i> Yeni Personel Ekle</a>
+    </div>
+</div>
+

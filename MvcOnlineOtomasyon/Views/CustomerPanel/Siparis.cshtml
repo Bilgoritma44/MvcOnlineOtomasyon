@@ -1,0 +1,35 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<SalesMove>
+@{
+    ViewBag.Title = "Siparis";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<div class="container">
+    <div class="form-group">
+        <table class="table table-bordered" style="margin-top:10px;">
+            <tr>
+                <th>Ürün Adı</th>
+                <th>Fiyat</th>
+                <th>Tarih</th>
+                
+            </tr>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Product.ProductName</td>
+                    <td>@x.Product.SalesPrice</td>
+                    <td>@x.Date</td>
+                    
+
+
+                </tr>
+
+            }
+        </table>
+    </div>
+
+</div>
+
+
+

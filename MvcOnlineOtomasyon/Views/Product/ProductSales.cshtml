@@ -1,0 +1,56 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.SalesMove
+@{
+    ViewBag.Title = "ProductSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Yeni Satış Ekleme Sayfası</h2>
+    <form class="form-group" method="post">
+        <div class="form-group">
+            <label><b>Ürün Adı</b></label>
+            @*@Html.TextBoxFor(x => x.ProductId, new { @class = "form-control" })*@
+            <input type="text" name="ProductId" class="form-control" value="@ViewBag.d1" readonly />
+        </div>
+        <div class="form-group">
+            <label><b>Personel</b></label>
+            @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.v2, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Müşteri</b></label>
+            @Html.DropDownListFor(x => x.CustomerId, (List<SelectListItem>)ViewBag.v3, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Ürün Fiyat</b></label>
+            @*@Html.TextBoxFor(x => x.Price, new { @class = "form-control" })*@
+            <input type="text" id="txt1" name="Price" class="form-control" onkeyup="sum();" value="@ViewBag.d2" />
+
+        </div>
+        <div class="form-group">
+            <label><b>Adet</b></label>
+            @*@Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })*@
+            <input type="number" min="1" placeholder="Adet Girin." id="txt2" name="Quantity" class="form-control" onkeyup="sum();" />
+        </div>
+        <div class="form-group">
+            <label><b>Toplam Fiyat</b></label>
+            @*@Html.TextBoxFor(x => x.SumPrice, new { @class = "form-control" })*@
+            <input type="text" name="SumPrice" id="txt3" class = "form-control"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-success float-right">Satış Yap</button>
+            <a href="/Product/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function sum() {
+        var sayi1 = document.getElementById('txt1').value;
+        var sayi2 = document.getElementById('txt2').value;
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+
+        if (!isNaN(sonuc)) {
+            document.getElementById('txt3').value = sonuc;
+        }
+    }
+</script>

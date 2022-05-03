@@ -1,0 +1,32 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<div class="container">
+    <div class="form-group">
+        <table class="table table-striped" style="margin-top:10px;">
+            <tr>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+
+            </tr>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Description</td>
+                    <td>@x.Tarih</td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a href="/CustomerPanel/KargoGetir" class="btn btn-outline-info float-right">Geri Dön</a>
+    </div>
+</div>
+
+

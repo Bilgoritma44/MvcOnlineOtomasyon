@@ -1,0 +1,39 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.Customer
+@{
+    ViewBag.Title = "Profilee";
+    Layout = "~/Views/Shared/CustomerLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Müşteri Güncelleme Sayfası</h2>
+    @using (Html.BeginForm("Profilee", "CustomerPanel", FormMethod.Get))
+    {
+
+        <div class="form-group">
+            <label><b>Müşteri Id</b></label>
+            @Html.TextBoxFor(x => x.CustomerId, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Müşteri Adı</b></label>
+            @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Müşteri Soyadı</b></label>
+            @Html.TextBoxFor(x => x.CustomerLastname, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Şehir</b></label>
+            @Html.TextBoxFor(x => x.CustomerCity, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>E-mail</b></label>
+            @Html.TextBoxFor(x => x.CustomerMail, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+
+            <a href="/CustomerPanel/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    }
+</div>
+

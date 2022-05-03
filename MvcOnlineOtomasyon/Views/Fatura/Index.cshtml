@@ -1,0 +1,84 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<Fatura>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="continer">
+    <div class="form-group">
+        <table class="table table-bordered" style="margin-top:10px;">
+
+            <tr>
+                
+                <th>Seri Sıra No</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>Toplam</th>
+                <th>Alıcı</th>
+                <th>Satıcı</th>
+                <th>Güncelle</th>
+                <th>Detay</th>
+                <th>Popup</th>
+                <th>Kalem</th>
+            </tr>
+
+            @foreach (var x in Model)
+            {
+        <tr>
+          
+            <td>@x.FaturaSeriNo @x.FaturaSıraNo</td>
+            <td>@(((DateTime)x.FaturaDate).ToString("dd-MMM-yyyy"))</td>
+            <td>@x.FaturaHour</td>
+            <td>@x.SumPrice</td>
+            <td>@x.Delivery</td>
+            <td>@x.Submitter</td>
+            <td><a class="btn btn-outline-warning" href="/Fatura/Update/@x.FaturaId"><i class="fas fa-pen-square"></i> Güncelle</a></td>
+            <td><a class="btn btn-outline-danger" href="/Fatura/Detail/@x.FaturaId"><i class="fas fa-info-circle"></i> Detay</a></td>
+            <td><a class="btn btn-outline-success" href="/Fatura/Detail/@x.FaturaId"><i class="fas fa-info-circle"></i> Popup</a></td>
+            <td><a class="btn btn-outline-secondary" href="/Fatura/Detail/@x.FaturaId"><i class="fas fa-info-circle"></i> Kalem</a></td>
+
+
+        </tr>
+
+            }
+
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-success float-right" href="/Fatura/Add"><i class="fas fa-plus-circle"></i> Yeni Fatura Ekle</a>
+        <button type="button" class="btn btn-danger" style="background-color:thistle" data-toggle="modal" data-target="#Modal1">Popup Penceresi</button>
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Popup Dialog Ekranı</h2>
+
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Seri No</td>
+                                <td>Sıra No</td>
+                                <td>Toplam</td>
+                            </tr>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td>@x.FaturaSeriNo</td>
+                                    <td>@x.FaturaSıraNo</td>
+                                    <td>@x.SumPrice</td>
+                                </tr>
+
+                            }
+                        </table>
+                        <button type="button" class="btn btn-outline-danger float-lg-right" data-dismiss="modal">Tamam</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,37 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.FaturaKalem
+@{
+    ViewBag.Title = "KalemAdd";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Yeni Fatura Kalem Ekleme Sayfası</h2>
+    <form class="form-group" method="post">
+        <div class="form-group">
+            <label><b>Açıklama</b></label>
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Miktar</b></label>
+            @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Birim Fiyat</b></label>
+            @Html.TextBoxFor(x => x.UnitQuantity, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Toplam Fiyat</b></label>
+            @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Fatura Id</b></label>
+            @Html.TextBoxFor(x => x.FaturaId, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-success float-right">Kaydet</button>
+            <a href="/Fatura/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    </form>
+</div>
+
+

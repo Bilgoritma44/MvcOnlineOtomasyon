@@ -1,0 +1,39 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<Personel>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Departman Detay Sayfası</h2>
+    <br/>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">@ViewBag.v1 Departmanı</li>
+    </ol>
+    <table class="table table-bordered">
+        <tr>
+            <th>Personel Id</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Görsel</th>
+            <th>Satış</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.PersonelId</td>
+                <td>@x.PersonelName</td>
+                <td>@x.PersonelLastName</td>
+                <td>@x.PersonelPhoto</td>
+                <td><a href="/Department/PersonelSales/@x.PersonelId" class="btn btn-outline-info"><i class="fab fa-adn"></i> Satış</a></td>
+            </tr>
+        }
+    </table>
+    <div class="form-group">
+        
+        <a href="/Department/Index" class="btn btn-outline-danger float-right">Geri Dön</a>
+    </div>
+</div>
+
+

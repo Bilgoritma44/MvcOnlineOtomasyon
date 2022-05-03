@@ -1,0 +1,45 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<SalesMove>
+@{
+    ViewBag.Title = "PersonelSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Departman Detay Sayfası</h2>
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Satış Yapan Personel: @ViewBag.v1</li>
+    </ol>
+    <table class="table table-bordered">
+        <tr>
+            <th>Satış Id</th>
+            <th>Ürün Adı</th>
+            <th>Müşteri</th>
+            <th>Satış Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam Fiyat</th>
+            <th>Tarih</th>
+            
+
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.SalesMoveId</td>
+                <td>@x.Product.ProductName</td>
+                <td>@x.Customer.CustomerName @x.Customer.CustomerLastname</td>
+                <td>@x.Quantity</td>
+                <td>@x.Price</td>
+                <td>@x.SumPrice</td>
+                <td>@(((DateTime)x.Date).ToString("dd-MMM-yyyy"))</td>
+            </tr>
+        }
+    </table>
+    <div class="form-group">
+
+        <a href="/Department/Detail/@ViewBag.v2" class="btn btn-outline-danger float-right">Geri Dön</a>
+    </div>
+</div>
+
+

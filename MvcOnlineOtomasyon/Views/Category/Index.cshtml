@@ -1,0 +1,39 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="form-group">
+        <table class="table table-bordered" style="margin-top:10px;">
+            <tr>
+                <th style="background-color:chocolate">Kategori Id</th>
+                <th style="background-color:chocolate">Kategori Adı</th>
+                <th style="background-color:chocolate">Sil</th>
+                <th style="background-color:chocolate">Güncelle</th>
+            </tr>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.CategoryId</td>
+                    <td>@x.CategoryName</td>
+                    <td><a class="btn btn-outline-primary" href="/Category/Delete/@x.CategoryId" id="DeleteBtn" onclick="return confirm('Silmek istediğinize emin misiniz?');"><i class="fas fa-trash"></i> Sil</a></td>
+                    <td><a class="btn btn-outline-warning" href="/Category/Update/@x.CategoryId"><i class="fas fa-pen-square"></i> Güncelle</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-success float-right" href="/Category/Add"><i class="fas fa-plus-circle"></i> Yeni Kategori Ekle</a>
+    </div>
+
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+    {
+        LiElementClasses = new List<string>
+        { "page-link"}
+    })
+</div>

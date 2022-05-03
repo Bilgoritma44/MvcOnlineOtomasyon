@@ -1,0 +1,54 @@
+﻿@model MvcOnlineOtomasyon.Models.Concrete.Fatura
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Müşteri Güncelleme Sayfası</h2>
+    @using (Html.BeginForm("Update", "Fatura", FormMethod.Post))
+    {
+
+        <div class="form-group">
+            @Html.HiddenFor(x => x.FaturaId)
+        </div>
+        <div class="form-group">
+            <label><b>Seri No</b></label>
+            @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Sıra No</b></label>
+            @Html.TextBoxFor(x => x.FaturaSıraNo, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Vergi Dairesi</b></label>
+            @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Tarih</b></label>
+            @Html.TextBoxFor(x => x.FaturaDate, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Saat</b></label>
+            @Html.TextBoxFor(x => x.FaturaHour, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Toplam</b></label>
+            @Html.TextBoxFor(x => x.SumPrice, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Alıcı</b></label>
+            @Html.TextBoxFor(x => x.Delivery, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label><b>Satıcı</b></label>
+            @Html.TextBoxFor(x => x.Submitter, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-outline-warning float-right">Güncelle</button>
+            <a href="/Customer/Index" class="btn btn-outline-danger">Vazgeç</a>
+        </div>
+    }
+</div>
+

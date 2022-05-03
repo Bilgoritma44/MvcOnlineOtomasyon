@@ -1,0 +1,42 @@
+﻿@using MvcOnlineOtomasyon.Models.Concrete
+@model List<FaturaKalem>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h2>Personel Detay Sayfası</h2>
+    <br />
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Alıcı Adı: @ViewBag.v1</li>
+    </ol>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Açıklama</th>
+            <th>Miktar</th>
+            <th>Birim Tutar</th>
+            <th>Toplam Tutar</th>
+            
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.FaturaKalemId</td>
+                <td>@x.Description</td>
+                <td>@x.Quantity</td>
+                <td>@x.UnitQuantity</td>
+                <td>@x.Amount</td>
+                
+
+            </tr>
+        }
+    </table>
+    <div class="form-group">
+
+        <a href="/Fatura/Index" class="btn btn-outline-danger">Geri Dön</a>
+        <a href="/Fatura/KalemAdd" class="btn btn-outline-info float-right">Yeni Fatura Kalem Ekle</a>
+    </div>
+</div>
+
